@@ -4,6 +4,7 @@ describe User do
 
   before :each do
     @user = User.new email: 'test@test.com', password: '12341234', name: 'test'
+    @user.save
   end
 
   describe '#new' do
