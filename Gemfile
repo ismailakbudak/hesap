@@ -57,5 +57,6 @@ group :development, :test do
   gem 'shoulda-matchers', '~> 2.2.0'
   gem 'shoulda-context', '~> 1.1.5'
   gem 'factory_girl_rails', '~> 4.0'
+  gem 'faker'
   gem 'bullet'
 end

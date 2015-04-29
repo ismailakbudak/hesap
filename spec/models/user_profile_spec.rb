@@ -2,13 +2,6 @@ require 'spec_helper'
 
 describe UserProfile do
 
-  before :each do
-    @user = User.new email: 'test@test.com', password: '12341234', name: 'test'
-    @user.user_profile = UserProfile.new first_name: 'First Name', last_name: 'Last Name', gsm: '05065051020'
-    @user.save
-    @user_profile = @user.user_profile
-  end
-
   describe User do
     it { should belong_to(:user) }
     it 'user has one profile' do
@@ -21,31 +14,40 @@ describe UserProfile do
     end
   end
 
-  describe '#new' do
-    it 'user must be have a user_profile' do
-      @user.user_profile.should_not be_nil
-    end
-    it 'user_profile must be have a user' do
-      @user_profile.user.should_not be_nil
-    end
+  it "has a valid factory" do
+    create(:user_profile).should be_valid
   end
 
-  describe '#first_name' do
-    it 'returns the correct first name' do
-        @user.user_profile.first_name.should eql 'First Name'
-    end
+  it "is invalid without a first_name" do
+    build(:user_profile, first_name: nil).should_not be_valid
   end
 
-  describe '#last_name' do
-    it 'returns the correct last name' do
-      @user.user_profile.last_name.should eql 'Last Name'
-    end
+  it "is invalid without a last_name" do
+    build(:user_profile, last_name: nil).should_not be_valid
   end
 
-  describe '#gsm' do
-    it 'returns the correct gsm' do
-      @user.user_profile.gsm.should eql '05065051020'
-    end
+  it "returns a user profile's full name as a string" do
+    @user_profile = create(:user_profile, first_name: "iso", last_name: "akbudak")
+    @user_profile.full_name.should == "iso akbudak"
   end
 
+  describe "filter last name by letter" do
+    before :each do
+      @iso    = create(:user_profile, first_name: "Iso", last_name: "Akbudak")
+      @emine  = create(:user_profile, first_name: "Emine", last_name: "Ozkan")
+      @semra  = create(:user_profile, first_name: "Semra", last_name: "Akbudak")
+    end
+
+    context "matching letters" do
+      it "returns a sorted array of results that match" do
+        UserProfile.by_letter("A").should == [ @iso, @semra]
+      end
+    end
+
+    context "non-matching letters" do
+      it "does not return contacts that don't start with the provided letter" do
+        UserProfile.by_letter("A").should_not include @emine
+      end
+    end
+  end
 end

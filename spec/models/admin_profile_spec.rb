@@ -2,49 +2,40 @@ require 'spec_helper'
 
 describe AdminProfile do
 
-  before :each do
-    @admin = Admin.new email: 'test@test.com', password: '12341234'
-    @admin.admin_profile = AdminProfile.new first_name: 'First Name', last_name: 'Last Name', gsm: '05065051020'
-    @admin.save
-    @admin_profile = @admin.admin_profile
+  it "has a valid factory" do
+    create(:admin_profile).should be_valid
   end
 
-  describe Admin do
-    it { should belong_to(:admin) }
-    it 'admin has one profile' do
-      t = Admin.reflect_on_association(:admin_profile)
-      t.macro.should == :has_one
-    end
-    it 'admin profile belongs to admin' do
-      t = AdminProfile.reflect_on_association(:admin)
-      t.macro.should == :belongs_to
-    end
+  it "is invalid without a first_name" do
+    build(:admin_profile, first_name: nil).should_not be_valid
   end
 
-  describe '#new' do
-    it 'admin must be have a admin_profile' do
-      @admin.admin_profile.should_not be_nil
-    end
-    it 'admin_profile must be have a admin' do
-      @admin_profile.admin.should_not be_nil
-    end
+  it "is invalid without a last_name" do
+    build(:admin_profile, last_name: nil).should_not be_valid
   end
 
-  describe '#first_name' do
-    it 'returns the correct first name' do
-      @admin.admin_profile.first_name.should eql 'First Name'
-    end
+  it "returns a admin profile's full name as a string" do
+    profile = create(:admin_profile, first_name: "John", last_name: "Doe")
+    profile.full_name.should == "John Doe"
   end
 
-  describe '#last_name' do
-    it 'returns the correct last name' do
-      @admin.admin_profile.last_name.should eql 'Last Name'
+  describe "filter last name by letter" do
+    before :each do
+      @smith    = create(:admin_profile, last_name: "Smith")
+      @jones    = create(:admin_profile, last_name: "Jones")
+      @johnson  = create(:admin_profile, last_name: "Johnson")
     end
-  end
 
-  describe '#gsm' do
-    it 'returns the correct gsm' do
-      @admin.admin_profile.gsm.should eql '05065051020'
+    context "matching letters" do
+      it "returns a sorted array of results that match" do
+        AdminProfile.by_letter("J").should == [@johnson, @jones]
+      end
+    end
+
+    context "non-matching letters" do
+      it "does not return contacts that don't start with the provided letter" do
+        AdminProfile.by_letter("J").should_not include @smith
+      end
     end
   end
 
