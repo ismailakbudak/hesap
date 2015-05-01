@@ -1,5 +1,6 @@
 class Hq::DashboardController < Hq::ApplicationController
-  def index
 
+  def index
   end
+
 end
