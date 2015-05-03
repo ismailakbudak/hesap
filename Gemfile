@@ -53,6 +53,7 @@ group :development, :test do
   gem 'katip'
   gem 'rspec-rails', '~> 2.14.0'
   gem 'capybara', '~> 2.1.0'
+  gem 'capybara-webkit'
   gem 'minitest', '~> 5.3.3'
   gem 'shoulda-matchers', '~> 2.2.0'
   gem 'shoulda-context', '~> 1.1.5'

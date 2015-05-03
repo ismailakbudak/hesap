@@ -5,4 +5,8 @@ FactoryGirl.define do
     gsm '05065051020'
   end
 
+  factory :invalid_admin_profile, parent: :admin_profile do |f|
+    f.first_name nil
+  end
+
 end
