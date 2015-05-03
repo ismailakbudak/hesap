@@ -14,6 +14,19 @@ describe Hq::AdminProfilesController do
     @admin.should_not be_nil
   end
 
+  # describe "GET #index" do
+  #   it "populates an array of admin_profiles" do
+  #     contact = (:admin_profile)
+  #     get :index
+  #     assigns(:admin_profiles).should eq([admin_profile])
+  #   end
+  #
+  #   it "renders the :index view" do
+  #     get :index
+  #     response.should render_template :index
+  #   end
+  # end
+
   describe "GET #show" do
     it "assigns the requested admin_profile to @admin_profile" do
       get :show, id: @admin_profile
@@ -83,12 +96,12 @@ describe Hq::AdminProfilesController do
     end
 
     context "valid attributes" do
-      it "located the requested @admin_profile" do
+      it "located the requested @profile" do
         put :update, id: @profile, admin_profile: attributes_for(:admin_profile)
         assigns(:admin_profile).should eql @admin.admin_profile
       end
 
-      it "changes @admin_profile's attributes" do
+      it "changes @profile's attributes" do
         put :update, id: @profile,
             admin_profile: attributes_for(:admin_profile, first_name: "Larry", last_name: "Smith")
         @profile.reload
@@ -96,19 +109,19 @@ describe Hq::AdminProfilesController do
         @profile.last_name.should eql "Smith"
       end
 
-      it "redirects to the updated @admin_profile" do
+      it "redirects to the updated @profile" do
         put :update, id: @profile, admin_profile: attributes_for(:admin_profile)
         response.should redirect_to @show_path
       end
     end
 
     context "invalid attributes" do
-      it "locates the requested @admin_profile" do
+      it "locates the requested @profile" do
         put :update, id: @profile, admin_profile: attributes_for(:invalid_admin_profile)
         assigns(:admin_profile).should eql @profile
       end
 
-      it "does not change @admin_profile's attributes" do
+      it "does not change @profile's attributes" do
         put :update, id: @profile,
             admin_profile: attributes_for(:admin_profile, first_name: "Larry", last_name: nil)
         @profile.reload
@@ -122,5 +135,22 @@ describe Hq::AdminProfilesController do
       end
     end
   end
+
+  # describe 'DELETE destroy' do
+  #   before :each do
+  #     @admin_profile= Factory(:admin_profile)
+  #   end
+  #
+  #   it "deletes the admin_profile" do
+  #     expect{
+  #       delete :destroy, id: @admin_profile
+  #     }.to change(AdminProfile,:count).by(-1)
+  #   end
+  #
+  #   it "redirects to admin_profiles#index" do
+  #     delete :destroy, id: @admin_profile
+  #     response.should redirect_to hq_admin_profile_url
+  #   end
+  # end
 
 end
