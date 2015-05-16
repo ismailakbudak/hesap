@@ -4,4 +4,8 @@ FactoryGirl.define do
     last_name Faker::Name.last_name
     gsm '05065051020'
   end
+
+  factory :invalid_user_profile, parent: :user_profile do |f|
+    f.first_name nil
+  end
 end
