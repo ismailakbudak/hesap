@@ -59,5 +59,6 @@ group :development, :test do
   gem 'shoulda-context', '~> 1.1.5'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'faker'
+  gem 'database_cleaner' # more on this shortly
   gem 'bullet'
 end

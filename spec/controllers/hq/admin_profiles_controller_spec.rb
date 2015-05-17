@@ -58,7 +58,7 @@ describe Hq::AdminProfilesController do
           post :create, admin_profile: attributes_for(:admin_profile)
         }.to change(AdminProfile,:count).by(1)
       end
-      it "redirects to the admin_profile" do
+      it "redirects to the admin_profile contact" do
         post :create, admin_profile: attributes_for(:admin_profile)
         response.should redirect_to @show_path
       end
@@ -78,7 +78,7 @@ describe Hq::AdminProfilesController do
   end
 
   describe "GET #edit" do
-    it "assigns a admin_profile to @admin_profile" do
+    it "assigns a admin ti to @admin_profile" do
       get :edit, id: @admin_profile
       assigns(:admin_profile).should eql @admin_profile
     end
