@@ -3,10 +3,13 @@
 %ul#dock
   %li.launcher
     %i.icon-dashboard
-    =link_to 'Dashboard', hq_root_path
-  -#%li.launcher
-  -#  %i.icon-file-text-alt
-  -#  =link_to 'Forms', '/hq/dashboard/form.html'
+    =link_to t('dock.dashboard'), hq_root_path
+  %li.launcher
+    %i.icon-user
+    =link_to t('dock.admins'), hq_admins_path
+  %li.launcher
+    %i.icon-user
+    =link_to t('dock.users'), hq_users_path
   -#%li.launcher
   -#  %i.icon-table
   -#  =link_to 'Tables', '/hq/dashboard/tables.html'
@@ -31,4 +34,4 @@
   -#  %i.icon-bug
   -#  %a{href: '#'} Feedback
 
-#beaker{data: {toggle: 'tooltip'}, title: 'Made by lab2023'}
+#beaker{data: {toggle: 'tooltip'}, title: 'Made by iso'}

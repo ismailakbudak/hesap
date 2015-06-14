@@ -1,7 +1,7 @@
 # encoding: UTF-8
 class Hq::AdminProfilesController < Hq::ApplicationController
   before_action :set_admin_profile, only: [:show, :edit, :update, :destroy]
-  add_breadcrumb I18n.t('activerecord.models.admin_profiles'), :hq_admin_profile_path
+  add_breadcrumb I18n.t('activerecord.models.admin_profile'), :hq_admin_profile_path
 
   def show
     add_breadcrumb @admin_profile.first_name, hq_admin_profile_path

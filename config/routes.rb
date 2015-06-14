@@ -12,6 +12,16 @@ Hesap::Application.routes.draw do
     root to: 'dashboard#index'
     resource :admin_profile, except: [:destroy], path: 'profile'
     resources :dashboard, only: [:index]
+    resources :users, except: [:create, :new] do
+      post :block, on: :member
+      post :unblock, on: :member
+      post :block_all, on: :collection
+    end
+    resources :admins, except: [:create, :new] do
+      post :block, on: :member
+      post :unblock, on: :member
+      post :block_all, on: :collection
+    end
   end
 
   devise_for :users, path: 'user',

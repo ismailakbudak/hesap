@@ -1,0 +1,42 @@
+en:
+  admin:
+    session:
+      title: Admin Sign in
+      button: Sign in
+      remember_me: Remember Me
+    registration:
+      title: Update Login Information
+      waiting_confirmation: 'Currently waiting confirmation for: %{email}'
+      hint_password: Leave it blank if you don't want to change it
+      hint_current_password: We need your current password to confirm your changes
+  dock:
+    users: Users
+    admins: Admins
+    dashboard: Dashboard
+  navbar:
+    login: Login
+    edit_profile: Edit Profile
+    edit_login_info: Edit Login Info
+    logout: Logout
+  view:
+    search: Search
+    actions: Actions
+    yes: Yes
+    no: No
+    list: '%{resource_name} List'
+    blank: Not specified
+    button:
+      update: Update
+      back: Back
+  admins:
+    block: Block
+    block_all: Block All
+    activate: Activate
+    name_or_email: Name or Email
+  users:
+    block: Block
+    block_all: Block All
+    activate: Activate
+    name_or_email: Name or Email
+
+
