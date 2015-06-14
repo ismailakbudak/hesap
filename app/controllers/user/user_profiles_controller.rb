@@ -33,6 +33,7 @@ class User::UserProfilesController < User::ApplicationController
 
   def set_user_profile
     if current_user.user_profile.nil?
+      flash[:info] = t('users.first_create_profile')
       redirect_to new_user_profile_path
     end
     @user_profile = current_user.user_profile

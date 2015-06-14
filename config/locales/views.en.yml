@@ -18,6 +18,10 @@ en:
     edit_profile: Edit Profile
     edit_login_info: Edit Login Info
     logout: Logout
+    signup: Sign Up
+    language:
+      en: English
+      tr: Türkçe
   view:
     search: Search
     actions: Actions

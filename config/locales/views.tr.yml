@@ -18,6 +18,14 @@ tr:
     edit_profile: Profil Güncelle
     edit_login_info: Giriş Bilggilerini Güncelle
     logout: Çıkış
+    signup: Kayıt Ol
+    language:
+      en: English
+      tr: Türkçe
+  will_paginate:
+      previous_label: "&#8592; Önceki"
+      next_label: "Sonraki &#8594;"
+      page_gap: "&hellip;"
   view:
     search: Arama
     actions: İşlemler
@@ -38,9 +46,5 @@ tr:
     block_all: Hepsini Engelle
     activate: Aktıf Et
     name_or_email: İsim yada E-posta
-  will_paginate:
-      previous_label: "&#8592; Önceki"
-      next_label: "Sonraki &#8594;"
-      page_gap: "&hellip;"
 
 

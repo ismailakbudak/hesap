@@ -8,14 +8,11 @@
     = csrf_meta_tags
   %body
     .container-narrow
-      .masthead
-        %ul.nav.nav-pills.pull-right
-          %li.active
-            %a{:href => "/"} Home
-        %h3.muted= link_to "hesap", root_path
+      / Navbar
+      = render partial: 'layouts/partials/navbar'
       %hr/
       = render partial: 'layouts/partials/messages'
       = yield
       %hr/
       .footer
-        %p © Company 2013
+        %p © Hesap 2015
