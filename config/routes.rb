@@ -24,7 +24,7 @@ Hesap::Application.routes.draw do
     end
   end
 
-  devise_for :users, path: 'user',
+  devise_for :users, controllers: { sessions: 'user/sessions',  registrations: 'user/registrations' }, path: 'user',
              path_names: { sign_in: 'login', sign_out: 'logout', password: 'password', confirmation: 'verification'}
 
   get 'language/:locale' => 'language#change', :as => 'change_language'
